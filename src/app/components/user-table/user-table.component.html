@@ -1,0 +1,13 @@
+<!--User table template-->
+
+<h2>Users table</h2>
+<div class="container-table">
+  <table>
+    <tr class="table-rows">
+      <td class="table-data-rows" *ngFor="let user of users">
+        <span>{{ user.name }}</span>
+        <span>{{ user.address.city }}</span>
+      </td>
+    </tr>
+  </table>
+</div>
