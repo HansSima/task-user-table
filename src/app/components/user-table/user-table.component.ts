@@ -20,17 +20,21 @@ export class UserTableComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.userSubscription.unsubscribe();
+    if (this.userSubscription) {
+      this.userSubscription.unsubscribe();
+    }
   }
 
   /**
    * @description Subscribe user data
    */
   subscribeUsers() {
-    this.users$.subscribe({
-      next: (user) => (this.users = user),
-      error: (err) => console.error('An error occurred', err),
-      complete: () => console.log('No more users'),
-    });
+    if (this.users$ !== undefined) {
+      this.users$.subscribe({
+        next: (user) => (this.users = user),
+        error: (err) => console.error('An error occurred', err),
+        complete: () => console.log('No more users'),
+      });
+    }
   }
 }
